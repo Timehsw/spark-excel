@@ -286,5 +286,5 @@ public abstract class RecordReader<KEYIN, VALUEIN> implements Closeable {
 
 ### 后记
 
-整个流程大概就是这样了.其中具体的实现逻辑就要看代码了 [代码地址](https://github.com/Timehsw/spark-excel/tree/master/spark-excel)
+整个流程大概就是这样了.其中具体的实现逻辑就要看代码了 [代码地址](https://github.com/Timehsw/spark-excel)
 
