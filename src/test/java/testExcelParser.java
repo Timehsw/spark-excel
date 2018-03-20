@@ -9,7 +9,7 @@ public class testExcelParser {
     public static void main(String[] args) throws IOException {
         ExcelParser excelParser = new ExcelParser();
         /** 读取本地文件用这个 */
-        String filePath = "C:\\jusfoun\\testExcel.xls";
+        String filePath = "C:\\testfile\\testExcel.xls";
         File   file     = new File(filePath);
 //
         InputStream fileInputStream = new FileInputStream(file);

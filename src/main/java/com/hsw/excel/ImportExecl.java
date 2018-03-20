@@ -349,10 +349,10 @@ public class ImportExecl {
 
 
 //        List<List<String>> list = poi.read("c:/book.xlsx");
-//        List<List<String>> list = poi.read("C:\\jusfoun\\9fc59872109ac694_1462948162231.xlsx");
-//        String string = "hdfs://192.168.4.202:8020/upload/temp/jusfoun/dataaccess/9fc59872109ac694/69cb4324c2674ba1ac306461c7e00c09/9fc59872109ac694_1462948162231.xlsx";
+//        List<List<String>> list = poi.read("C:\\testfile\\9fc59872109ac694_1462948162231.xlsx");
+//        String string = "hdfs://192.168.4.202:8020/upload/temp/testfile/dataaccess/9fc59872109ac694/69cb4324c2674ba1ac306461c7e00c09/9fc59872109ac694_1462948162231.xlsx";
         String string = "hdfs://192.168.4.202:8020/hsw/testExcel.xls";
-//        String string="C:\\jusfoun\\userinfo.xls";
+//        String string="C:\\testfile\\userinfo.xls";
         List<List<String>> list = poi.read(string);
 
         if (list != null) {

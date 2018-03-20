@@ -24,7 +24,7 @@ object JudegExcelUtil {
   def isExcel2007(filePath:String):Boolean=filePath.matches("^.+\\.(?i)(xlsx)$")
 
   def main(args: Array[String]) {
-    val path="hdfs://192.168.4.202:8020/hsw/jusfounDatafuse.xlsx"
+    val path="hdfs://192.168.4.202:8020/hsw/testfileDatafuse.xlsx"
     val flag=isExcelFile(path)
     println(flag)
     val flag1=isExcel2007(path)
