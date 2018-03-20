@@ -7,7 +7,7 @@ import org.scalatest.{BeforeAndAfterAll, FunSuite, ShouldMatchers}
 
 /**
   * Created by hushiwei on 2017/9/12.
-  * desc : dsp广告投放单元测试类
+  * desc :
   */
 class ScalaFunc extends FunSuite with ENV with BeforeAndAfterAll with ShouldMatchers {
   override def beforeAll(): Unit = {
