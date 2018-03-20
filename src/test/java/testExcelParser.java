@@ -10,10 +10,10 @@ public class testExcelParser {
         ExcelParser excelParser = new ExcelParser();
         /** 读取本地文件用这个 */
         String filePath = "C:\\jusfoun\\testExcel.xls";
-        File file = new File(filePath);
+        File   file     = new File(filePath);
 //
         InputStream fileInputStream = new FileInputStream(file);
-        String line = excelParser.parseExcelData(fileInputStream);
+        String      line            = excelParser.parseExcelData(fileInputStream);
         System.out.println(line);
         fileInputStream.close();
     }

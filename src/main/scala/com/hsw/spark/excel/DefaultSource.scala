@@ -28,17 +28,19 @@ class DefaultSource
   /**
     * 用给定的参数将存储在Excel中的数据创建一个新的relation
     * 参数中必须包含路径,可选的包括分隔符,引用的符号,还有是否把第一行作为结构
+    *
     * @param sqlContext
     * @param parameters
     * @return
     */
   override def createRelation(sqlContext: SQLContext, parameters: Map[String, String]): BaseRelation = {
-    createRelation(sqlContext,parameters,null)
+    createRelation(sqlContext, parameters, null)
   }
 
   /**
     * 用给定的参数和用户提供的schema将存储在Excel中的数据创建一个新的relation
     * 参数中必须包含路径,可选的包括分隔符,引用的符号,还有是否把第一行作为结构
+    *
     * @param sqlContext
     * @param parameters
     * @param schema
@@ -46,16 +48,16 @@ class DefaultSource
     */
   override def createRelation(sqlContext: SQLContext, parameters: Map[String, String], schema: StructType): BaseRelation = {
     //检查路径
-    val path=checkPath(parameters)
+    val path = checkPath(parameters)
 
-    logger.warn("====================================="+parameters.toString())
-//    获取分隔符
-    val delimiter=TypeCast.toChar(parameters.getOrElse("delimiter",","))
+    logger.warn("=====================================" + parameters.toString())
+    //    获取分隔符
+    val delimiter = TypeCast.toChar(parameters.getOrElse("delimiter", ","))
 
-//    获取解析的模式.permissive是解析所有的行.droppmalformed删除不匹配的行
+    //    获取解析的模式.permissive是解析所有的行.droppmalformed删除不匹配的行
     val parseMode = parameters.getOrElse("mode", "PERMISSIVE")
 
-//    获取header,判断是否把第一行数据当成结构,默认是false
+    //    获取header,判断是否把第一行数据当成结构,默认是false
     val useHeader = parameters.getOrElse("header", "false")
     val headerFlag = if (useHeader == "true") {
       true
@@ -75,9 +77,9 @@ class DefaultSource
     }
 
 
-//    是否推断类型,默认是false
+    //    是否推断类型,默认是false
 
-val charset = parameters.getOrElse("charset",ExcelFile.DEFAULT_CHARSET.name() )
+    val charset = parameters.getOrElse("charset", ExcelFile.DEFAULT_CHARSET.name())
     // TODO validate charset?
     val inferSchema = parameters.getOrElse("inferSchema", "false")
     val inferSchemaFlag = if (inferSchema == "false") {
@@ -88,7 +90,7 @@ val charset = parameters.getOrElse("charset",ExcelFile.DEFAULT_CHARSET.name() )
       throw new Exception("Infer schema flag can be true or false")
     }
 
-//
+    //
     val nullValue = parameters.getOrElse("nullValue", "")
 
     val dateFormat = parameters.getOrElse("dateFormat", null)
@@ -102,11 +104,11 @@ val charset = parameters.getOrElse("charset",ExcelFile.DEFAULT_CHARSET.name() )
       *
       * 值得注意的是第一个参数.惰性求值.需要用到的时候我们才求值
       * 第一个参数需要的是一个RDD.我们需要有一个类把我们的Excel数据读到分布式的RDD中
-      *   因此我们重写了一个ExcelImportFormat
+      * 因此我们重写了一个ExcelImportFormat
       * 剩下的参数,都是为了给这个普通的RDD赋予schema.最后成为一个DataFrame
       */
     ExcelRelation(
-      () => ExcelFile.withCharset(sqlContext.sparkContext, path,parameters, charset),
+      () => ExcelFile.withCharset(sqlContext.sparkContext, path, parameters, charset),
       Some(path),
       headerFlag,
       delimiter,
@@ -140,7 +142,7 @@ val charset = parameters.getOrElse("charset",ExcelFile.DEFAULT_CHARSET.name() )
     if (doSave) {
       // Only save data when the save mode is not ignore.
       val codecClass = CompressionCodecs.getCodecClass(parameters.getOrElse("codec", null))
-//      data.saveAsCsvFile(path, parameters, codecClass)
+      //      data.saveAsCsvFile(path, parameters, codecClass)
       ???
     }
 
